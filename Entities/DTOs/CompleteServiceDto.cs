@@ -13,6 +13,6 @@ namespace Entities.DTOs
         public int ControllerUserId { get; set; }
         public string Note { get; set; }
         public int PaymentTypeId { get; set; }
-        public double Price { get; set; }
+        public decimal Price { get; set; }
     }
 }

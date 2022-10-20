@@ -19,7 +19,7 @@ namespace Entities.Concrete
         public string Description { get; set; }
         public int ServiceInfoId { get; set; }
         public int OperatorId { get; set; }
-        public DateTime CreatedDate { get; set; }
+        public DateTime CreatedDate { get; set; } = DateTime.Now;
 
     }
 }

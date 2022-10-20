@@ -11,8 +11,8 @@ namespace Business.Abstract
 {
     public interface IVehicleService
     {
-        IDataResult<PagedModel<List<VehicleGroupDto>>> GetAllByInfoQuery(VehicleInfoQueryDto vehicleInfoQuery);
-        IDataResult<List<VehicleCountDto>> GetVehiclesCount(VehicleGroupCountDto vehicleGroupCountDto);
+        //IDataResult<PagedModel<List<VehicleGroupDto>>> GetAllByInfoQuery(VehicleInfoQueryDto vehicleInfoQuery);
+        //IDataResult<List<VehicleCountDto>> GetVehiclesCount(VehicleGroupCountDto vehicleGroupCountDto);
         IDataResult<int> GetVehiclesCountTaxiType(VehicleTaxiTypeCountDto vehicleCountDto);
         IDataResult<List<Vehicle>> GetAll();
         IDataResult<Vehicle> GetById(int id);

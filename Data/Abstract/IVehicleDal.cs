@@ -11,7 +11,7 @@ namespace DataAccess.Abstract
 {
     public interface IVehicleDal : IEntityRepository<Vehicle>
     {
-        List<VehicleGroupDto> GetAllByInfoQuery();
+        //List<VehicleGroupDto> GetAllByInfoQuery();
         public List<VehicleCountDto> GetVehicleCount(List<Vehicle> vehicleList);
         public int  GetVehicleCountTaxiType(VehicleTaxiTypeCountDto vehicleCountDto);
 

@@ -10,10 +10,10 @@ namespace Entities.Concrete
     public class Device : IEntity
     {
         public int Id { get; set; }
-        public String Imei { get; set; }
-        public String Plate { get; set; }
-        public String Brand { get; set; }
-        public String Model { get; set; }
+        public string Imei { get; set; }
+        public string Plate { get; set; }
+        public string Brand { get; set; }
+        public string Model { get; set; }
         public int TaxiType { get; set; }
         public bool Active { get; set; }
         public bool Statu { get; set; }

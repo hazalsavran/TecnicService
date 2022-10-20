@@ -162,7 +162,7 @@ namespace Business.Concrete
                 CreatedUserId = serviceRegisterDto.CreatedUserId,
                 InstallerServiceId = serviceRegisterDto.ServiceId,
                 VehicleId = serviceRegisterDto.VehicleId,
-                CreatedTime = DateTime.Now,
+                //CreatedTime = DateTime.Now,
                 DriverId = serviceRegisterDto.DriverId
             };
             try
@@ -488,13 +488,13 @@ namespace Business.Concrete
             pageData.Id = serviceInfo.Id;
             pageData.ServiceStatusId = serviceInfo.StatusId;
             pageData.CreatedDescription = serviceInfo.CreatedNote;
-            pageData.CreatedTime = serviceInfo.CreatedTime.ToString("dd/MM/yyyy H:mm");
+            pageData.CreatedTime = serviceInfo.CreatedTime.ToString(/*"dd/MM/yyyy H:mm"*/);
             pageData.CreatedUserId = serviceInfo.CreatedUserId;
             pageData.InstallerDescription = serviceInfo.InstallerNote;
             pageData.InstallerUserId = serviceInfo.InstallerUserId;
-            pageData.InstallerTime = serviceInfo.InstallerTime.ToString("dd/MM/yyyy H:mm");
+            pageData.InstallerTime = serviceInfo.InstallerTime.ToString(); ;
             pageData.ControllerUserId = serviceInfo.ControllerUserId;
-            pageData.ControllerTime = serviceInfo.FinishTime.ToString("dd/MM/yyyy H:mm");
+            pageData.ControllerTime = serviceInfo.FinishTime.ToString(/*"dd/MM/yyyy H:mm"*/);
             pageData.ControllerDescription = serviceInfo.FinishedNote;
             var serviceasd = _serviceService.GetById(serviceInfo.InstallerServiceId).Data;
             pageData.ServiceArea = serviceasd.Name + _regionService.GetById(serviceasd.RegionId).Data.Name.ToString();

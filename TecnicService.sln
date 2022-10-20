@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iTaksiTecnicService", "iTaksiTecnicService\iTaksiTecnicService.csproj", "{64DA455F-92BE-48EC-A585-7FF6D1450EAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TecnicService", "iTaksiTecnicService\TecnicService.csproj", "{64DA455F-92BE-48EC-A585-7FF6D1450EAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{FA5FB183-668F-4293-BF8F-6FB62C5417F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{FA5FB183-668F-4293-BF8F-6FB62C5417F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{C74CA6C0-32D9-4A01-9FB5-1790D2F10E38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{C74CA6C0-32D9-4A01-9FB5-1790D2F10E38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{5057A03F-EA1C-4D16-93A0-C8D042F1DFD5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "Business\Business.csproj", "{5057A03F-EA1C-4D16-93A0-C8D042F1DFD5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{3B407DFD-7C3E-4022-B7E0-C3A4E8310D9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{3B407DFD-7C3E-4022-B7E0-C3A4E8310D9B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

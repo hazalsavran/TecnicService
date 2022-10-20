@@ -10,7 +10,7 @@ namespace Entities.Concrete
     public class Vehicle : IEntity
     {
         public int Id { get; set; }
-        //public int VehicleOwnerId { get; set; }
+        public int VehicleOwnerId { get; set; }
 
         //public int? ProvinceId { get; set; }
         public int? TaxiTypeId { get; set; }

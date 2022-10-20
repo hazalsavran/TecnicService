@@ -20,8 +20,8 @@ namespace Entities.DTOs
         public List<Region> Regions { get; set; }
         public int ControllerUserId { get; set; }
         public int PaymentTypeId { get; set; }
-        public double Price { get; set; }
-        public DateTime FinishTime { get; set; }
+        public decimal Price { get; set; }
+        public DateTime? FinishTime { get; set; }
 
     }
 }

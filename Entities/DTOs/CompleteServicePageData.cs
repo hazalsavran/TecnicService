@@ -21,8 +21,8 @@ namespace Entities.DTOs
         public List<ServiceMediaDto> CreatedServiceMedias { get; set; }
         public List<ServiceMediaDto> InstallerServiceMedias { get; set; }
         public int CreatedUserId { get; set; }
-        public DateTime CreatedTime { get; set; }
+        public DateTime CreatedTime { get; set; } = DateTime.Now;
         public int InstallerUserId { get; set; }
-        public DateTime InstallerTime { get; set; }
+        public DateTime? InstallerTime { get; set; }
     }
 }

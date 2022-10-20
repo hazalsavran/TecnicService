@@ -19,7 +19,7 @@ namespace Entities.DTOs
         public List<ServiceMediaDto> ServiceMedias { get; set; }
         public List<Region> Regions { get; set; }
         public int InstallerUserId { get; set; }
-        public DateTime InstallerTime { get; set; }
+        public DateTime? InstallerTime { get; set; }
         public PaginationDto Pagination { get; set; }
 
     }

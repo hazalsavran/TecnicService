@@ -14,21 +14,21 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfVehicleDal : EfEntityRepositoryBase<Vehicle, ITaksiContext>, IVehicleDal
     {
-        public List<VehicleGroupDto> GetAllByInfoQuery()
-        {
-            using (ITaksiContext context = new ITaksiContext())
-            {
-                return (from vehicle in context.Vehicles
-                        join groupVehicle in context.VehicleGroups
-                        on vehicle.Id equals groupVehicle.VehicleId
-                        where vehicle.Id == groupVehicle.VehicleId
-                        select new VehicleGroupDto
-                        {
-                            Vehicle = vehicle,
-                            VehicleGroups = groupVehicle
-                        }).ToList();
-            }
-        }
+        //public List<VehicleGroupDto> GetAllByInfoQuery()
+        //{
+        //    using (ITaksiContext context = new ITaksiContext())
+        //    {
+        //        return (from vehicle in context.Vehicles
+        //                join groupVehicle in context.VehicleGroups
+        //                on vehicle.Id equals groupVehicle.VehicleId
+        //                where vehicle.Id == groupVehicle.VehicleId
+        //                select new VehicleGroupDto
+        //                {
+        //                    Vehicle = vehicle,
+        //                    VehicleGroups = groupVehicle
+        //                }).ToList();
+        //    }
+        //}
 
         public List<VehicleCountDto> GetVehicleCount(List<Vehicle> vehicleList)
         {

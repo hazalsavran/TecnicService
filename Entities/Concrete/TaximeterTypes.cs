@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete
 {
-    public class Region : IEntity
+    public class TaximeterTypes:IEntity
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        //public int ProvinceId { get; set; }
     }
 }

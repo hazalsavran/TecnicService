@@ -36,150 +36,150 @@ namespace Business.Concrete
             return new ErrorDataResult<Vehicle>(vehicle, "Plaka kaydı zaten mevcut!");
         }
 
-        [SecuredOperation("nodejs,admin")]
-        public IDataResult<PagedModel<List<VehicleGroupDto>>> GetAllByInfoQuery(VehicleInfoQueryDto vehicleInfoQuery)
-        {
-            int pageNumber = (int)(vehicleInfoQuery?.Pagination?.PageNumber != null ? vehicleInfoQuery.Pagination.PageNumber : 1);
-            int pageSize = (int)(vehicleInfoQuery?.Pagination?.PageSize != null ? vehicleInfoQuery.Pagination.PageSize : 10);
-            pageNumber = pageNumber > 0 ? pageNumber : 1;
-            pageSize = pageSize > 0 ? pageSize : 10;
-            int start = (int)((pageNumber - 1) * pageSize);
+        //[SecuredOperation("nodejs,admin")]
+        //public IDataResult<PagedModel<List<VehicleGroupDto>>> GetAllByInfoQuery(VehicleInfoQueryDto vehicleInfoQuery)
+        //{
+        //    int pageNumber = (int)(vehicleInfoQuery?.Pagination?.PageNumber != null ? vehicleInfoQuery.Pagination.PageNumber : 1);
+        //    int pageSize = (int)(vehicleInfoQuery?.Pagination?.PageSize != null ? vehicleInfoQuery.Pagination.PageSize : 10);
+        //    pageNumber = pageNumber > 0 ? pageNumber : 1;
+        //    pageSize = pageSize > 0 ? pageSize : 10;
+        //    int start = (int)((pageNumber - 1) * pageSize);
 
-            var vehicleGroupList = _vehicleDal.GetAllByInfoQuery();
+        //    var vehicleGroupList = _vehicleDal.GetAllByInfoQuery();
 
-            if (vehicleInfoQuery.TaxiType > 0)
-            {
-                vehicleGroupList = vehicleGroupList.Where(x => x.Vehicle.TaxiTypeId == vehicleInfoQuery.TaxiType).ToList();
-            }
+        //    if (vehicleInfoQuery.TaxiType > 0)
+        //    {
+        //        vehicleGroupList = vehicleGroupList.Where(x => x.Vehicle.TaxiTypeId == vehicleInfoQuery.TaxiType).ToList();
+        //    }
 
-            if (string.IsNullOrWhiteSpace(vehicleInfoQuery.Plate) == false)
-            {
-                vehicleGroupList = vehicleGroupList.Where(x => x.Vehicle.Plate == vehicleInfoQuery.Plate).ToList();
-            }
+        //    if (string.IsNullOrWhiteSpace(vehicleInfoQuery.Plate) == false)
+        //    {
+        //        vehicleGroupList = vehicleGroupList.Where(x => x.Vehicle.Plate == vehicleInfoQuery.Plate).ToList();
+        //    }
 
-            if (vehicleInfoQuery.GroupId > 0)
-            {
-                if (vehicleInfoQuery.UserId == 0 && vehicleInfoQuery.FleetId == 0)
-                {
-                    vehicleGroupList = vehicleGroupList.Where(x => x.VehicleGroups.GroupId == vehicleInfoQuery.GroupId).ToList();
-                }
-                else if (vehicleInfoQuery.UserId > 0 && vehicleInfoQuery.FleetId > 0)
-                {
-                    vehicleGroupList = vehicleGroupList.Where(x => x.VehicleGroups.GroupId == vehicleInfoQuery.GroupId && x.VehicleGroups.UserId == vehicleInfoQuery.UserId && x.VehicleGroups.FleetId == vehicleInfoQuery.FleetId).ToList();
-                }
-                else if (vehicleInfoQuery.UserId > 0 && vehicleInfoQuery.FleetId == 0)
-                {
-                    vehicleGroupList = vehicleGroupList.Where(x => x.VehicleGroups.GroupId == vehicleInfoQuery.GroupId && x.VehicleGroups.UserId == vehicleInfoQuery.UserId).ToList();
-                }
-                else if (vehicleInfoQuery.UserId == 0 && vehicleInfoQuery.FleetId > 0)
-                {
-                    vehicleGroupList = vehicleGroupList.Where(x => x.VehicleGroups.GroupId == vehicleInfoQuery.GroupId && x.VehicleGroups.FleetId == vehicleInfoQuery.FleetId).ToList();
-                }
-            }
-            else
-            {
-                if (vehicleInfoQuery.UserId > 0 || vehicleInfoQuery.FleetId > 0)
-                {
-                    if (vehicleInfoQuery.UserId > 0 && vehicleInfoQuery.FleetId > 0)
-                    {
-                        vehicleGroupList = vehicleGroupList.Where(x => x.VehicleGroups.UserId == vehicleInfoQuery.UserId && x.VehicleGroups.FleetId == vehicleInfoQuery.FleetId).ToList();
-                    }
-                    else if (vehicleInfoQuery.UserId > 0 && vehicleInfoQuery.FleetId == 0)
-                    {
-                        vehicleGroupList = vehicleGroupList.Where(x => x.VehicleGroups.UserId == vehicleInfoQuery.UserId).ToList();
-                    }
-                    else if (vehicleInfoQuery.UserId == 0 && vehicleInfoQuery.FleetId > 0)
-                    {
-                        vehicleGroupList = vehicleGroupList.Where(x => x.VehicleGroups.FleetId == vehicleInfoQuery.FleetId).ToList();
-                    }
-                }
-            }
+        //    if (vehicleInfoQuery.GroupId > 0)
+        //    {
+        //        if (vehicleInfoQuery.UserId == 0 && vehicleInfoQuery.FleetId == 0)
+        //        {
+        //            vehicleGroupList = vehicleGroupList.Where(x => x.VehicleGroups.GroupId == vehicleInfoQuery.GroupId).ToList();
+        //        }
+        //        else if (vehicleInfoQuery.UserId > 0 && vehicleInfoQuery.FleetId > 0)
+        //        {
+        //            vehicleGroupList = vehicleGroupList.Where(x => x.VehicleGroups.GroupId == vehicleInfoQuery.GroupId && x.VehicleGroups.UserId == vehicleInfoQuery.UserId && x.VehicleGroups.FleetId == vehicleInfoQuery.FleetId).ToList();
+        //        }
+        //        else if (vehicleInfoQuery.UserId > 0 && vehicleInfoQuery.FleetId == 0)
+        //        {
+        //            vehicleGroupList = vehicleGroupList.Where(x => x.VehicleGroups.GroupId == vehicleInfoQuery.GroupId && x.VehicleGroups.UserId == vehicleInfoQuery.UserId).ToList();
+        //        }
+        //        else if (vehicleInfoQuery.UserId == 0 && vehicleInfoQuery.FleetId > 0)
+        //        {
+        //            vehicleGroupList = vehicleGroupList.Where(x => x.VehicleGroups.GroupId == vehicleInfoQuery.GroupId && x.VehicleGroups.FleetId == vehicleInfoQuery.FleetId).ToList();
+        //        }
+        //    }
+        //    else
+        //    {
+        //        if (vehicleInfoQuery.UserId > 0 || vehicleInfoQuery.FleetId > 0)
+        //        {
+        //            if (vehicleInfoQuery.UserId > 0 && vehicleInfoQuery.FleetId > 0)
+        //            {
+        //                vehicleGroupList = vehicleGroupList.Where(x => x.VehicleGroups.UserId == vehicleInfoQuery.UserId && x.VehicleGroups.FleetId == vehicleInfoQuery.FleetId).ToList();
+        //            }
+        //            else if (vehicleInfoQuery.UserId > 0 && vehicleInfoQuery.FleetId == 0)
+        //            {
+        //                vehicleGroupList = vehicleGroupList.Where(x => x.VehicleGroups.UserId == vehicleInfoQuery.UserId).ToList();
+        //            }
+        //            else if (vehicleInfoQuery.UserId == 0 && vehicleInfoQuery.FleetId > 0)
+        //            {
+        //                vehicleGroupList = vehicleGroupList.Where(x => x.VehicleGroups.FleetId == vehicleInfoQuery.FleetId).ToList();
+        //            }
+        //        }
+        //    }
 
-            int totalRecords = vehicleGroupList.Count;
-            vehicleGroupList = vehicleGroupList.Skip(start).Take(pageSize).ToList();
+        //    int totalRecords = vehicleGroupList.Count;
+        //    vehicleGroupList = vehicleGroupList.Skip(start).Take(pageSize).ToList();
 
-            if (totalRecords == 0)
-            {
-                return new SuccessDataResult<PagedModel<List<VehicleGroupDto>>>("Empty List");
-            }
-            else if (vehicleGroupList.Count == 0)
-            {
-                return new ErrorDataResult<PagedModel<List<VehicleGroupDto>>>("Wrong Page Settings");
-            }
-            else
-            {
-                var pagedModel = new PagedModel<List<VehicleGroupDto>>(vehicleGroupList, totalRecords, pageNumber, pageSize);
-                return new SuccessDataResult<PagedModel<List<VehicleGroupDto>>>(pagedModel, Messages.Success);
-            }
-        }
+        //    if (totalRecords == 0)
+        //    {
+        //        return new SuccessDataResult<PagedModel<List<VehicleGroupDto>>>("Empty List");
+        //    }
+        //    else if (vehicleGroupList.Count == 0)
+        //    {
+        //        return new ErrorDataResult<PagedModel<List<VehicleGroupDto>>>("Wrong Page Settings");
+        //    }
+        //    else
+        //    {
+        //        var pagedModel = new PagedModel<List<VehicleGroupDto>>(vehicleGroupList, totalRecords, pageNumber, pageSize);
+        //        return new SuccessDataResult<PagedModel<List<VehicleGroupDto>>>(pagedModel, Messages.Success);
+        //    }
+        //}
 
-        [SecuredOperation("nodejs,admin")]
-        public IDataResult<List<VehicleCountDto>> GetVehiclesCount(VehicleGroupCountDto vehicleGroupCountDto)
-        {
-            var vehicleGroupList = _vehicleDal.GetAllByInfoQuery();
-            var vehicleList = new List<Vehicle>();
+        //[SecuredOperation("nodejs,admin")]
+        //public IDataResult<List<VehicleCountDto>> GetVehiclesCount(VehicleGroupCountDto vehicleGroupCountDto)
+        //{
+        //    var vehicleGroupList = _vehicleDal.GetAllByInfoQuery();
+        //    var vehicleList = new List<Vehicle>();
 
-            if (vehicleGroupCountDto.GroupId > 0)
-            {
-                if (vehicleGroupCountDto.UserId == 0 && vehicleGroupCountDto.FleetId == 0)
-                {
-                    vehicleList = vehicleGroupList.Where(x => x.VehicleGroups.GroupId == vehicleGroupCountDto.GroupId).Select(x => x.Vehicle).ToList();
-                }
-                else if (vehicleGroupCountDto.UserId > 0 && vehicleGroupCountDto.FleetId > 0)
-                {
-                    vehicleList = vehicleGroupList.Where(x => x.VehicleGroups.GroupId == vehicleGroupCountDto.GroupId && x.VehicleGroups.UserId == vehicleGroupCountDto.UserId && x.VehicleGroups.FleetId == vehicleGroupCountDto.FleetId).Select(x => x.Vehicle).ToList();
-                }
-                else if (vehicleGroupCountDto.UserId > 0 && vehicleGroupCountDto.FleetId == 0)
-                {
-                    vehicleList = vehicleGroupList.Where(x => x.VehicleGroups.GroupId == vehicleGroupCountDto.GroupId && x.VehicleGroups.UserId == vehicleGroupCountDto.UserId).Select(x => x.Vehicle).ToList();
-                }
-                else if (vehicleGroupCountDto.UserId == 0 && vehicleGroupCountDto.FleetId > 0)
-                {
-                    vehicleList = vehicleGroupList.Where(x => x.VehicleGroups.GroupId == vehicleGroupCountDto.GroupId && x.VehicleGroups.FleetId == vehicleGroupCountDto.FleetId).Select(x => x.Vehicle).ToList();
-                }
-            }
-            else
-            {
-                if (vehicleGroupCountDto.UserId > 0 || vehicleGroupCountDto.FleetId > 0)
-                {
-                    if (vehicleGroupCountDto.UserId > 0 && vehicleGroupCountDto.FleetId > 0)
-                    {
-                        vehicleList = vehicleGroupList.Where(x => x.VehicleGroups.UserId == vehicleGroupCountDto.UserId && x.VehicleGroups.FleetId == vehicleGroupCountDto.FleetId).Select(x => x.Vehicle).ToList();
-                    }
-                    else if (vehicleGroupCountDto.UserId > 0 && vehicleGroupCountDto.FleetId == 0)
-                    {
-                        vehicleList = vehicleGroupList.Where(x => x.VehicleGroups.UserId == vehicleGroupCountDto.UserId).Select(x => x.Vehicle).ToList();
-                    }
-                    else if (vehicleGroupCountDto.UserId == 0 && vehicleGroupCountDto.FleetId > 0)
-                    {
-                        vehicleList = vehicleGroupList.Where(x => x.VehicleGroups.FleetId == vehicleGroupCountDto.FleetId).Select(x => x.Vehicle).ToList();
-                    }
-                }
-                else
-                {
-                    vehicleList = vehicleGroupList.Select(x => x.Vehicle).ToList();
-                }
-            }
+        //    if (vehicleGroupCountDto.GroupId > 0)
+        //    {
+        //        if (vehicleGroupCountDto.UserId == 0 && vehicleGroupCountDto.FleetId == 0)
+        //        {
+        //            vehicleList = vehicleGroupList.Where(x => x.VehicleGroups.GroupId == vehicleGroupCountDto.GroupId).Select(x => x.Vehicle).ToList();
+        //        }
+        //        else if (vehicleGroupCountDto.UserId > 0 && vehicleGroupCountDto.FleetId > 0)
+        //        {
+        //            vehicleList = vehicleGroupList.Where(x => x.VehicleGroups.GroupId == vehicleGroupCountDto.GroupId && x.VehicleGroups.UserId == vehicleGroupCountDto.UserId && x.VehicleGroups.FleetId == vehicleGroupCountDto.FleetId).Select(x => x.Vehicle).ToList();
+        //        }
+        //        else if (vehicleGroupCountDto.UserId > 0 && vehicleGroupCountDto.FleetId == 0)
+        //        {
+        //            vehicleList = vehicleGroupList.Where(x => x.VehicleGroups.GroupId == vehicleGroupCountDto.GroupId && x.VehicleGroups.UserId == vehicleGroupCountDto.UserId).Select(x => x.Vehicle).ToList();
+        //        }
+        //        else if (vehicleGroupCountDto.UserId == 0 && vehicleGroupCountDto.FleetId > 0)
+        //        {
+        //            vehicleList = vehicleGroupList.Where(x => x.VehicleGroups.GroupId == vehicleGroupCountDto.GroupId && x.VehicleGroups.FleetId == vehicleGroupCountDto.FleetId).Select(x => x.Vehicle).ToList();
+        //        }
+        //    }
+        //    else
+        //    {
+        //        if (vehicleGroupCountDto.UserId > 0 || vehicleGroupCountDto.FleetId > 0)
+        //        {
+        //            if (vehicleGroupCountDto.UserId > 0 && vehicleGroupCountDto.FleetId > 0)
+        //            {
+        //                vehicleList = vehicleGroupList.Where(x => x.VehicleGroups.UserId == vehicleGroupCountDto.UserId && x.VehicleGroups.FleetId == vehicleGroupCountDto.FleetId).Select(x => x.Vehicle).ToList();
+        //            }
+        //            else if (vehicleGroupCountDto.UserId > 0 && vehicleGroupCountDto.FleetId == 0)
+        //            {
+        //                vehicleList = vehicleGroupList.Where(x => x.VehicleGroups.UserId == vehicleGroupCountDto.UserId).Select(x => x.Vehicle).ToList();
+        //            }
+        //            else if (vehicleGroupCountDto.UserId == 0 && vehicleGroupCountDto.FleetId > 0)
+        //            {
+        //                vehicleList = vehicleGroupList.Where(x => x.VehicleGroups.FleetId == vehicleGroupCountDto.FleetId).Select(x => x.Vehicle).ToList();
+        //            }
+        //        }
+        //        else
+        //        {
+        //            vehicleList = vehicleGroupList.Select(x => x.Vehicle).ToList();
+        //        }
+        //    }
 
-            var result = _vehicleDal.GetVehicleCount(vehicleList);
+        //    var result = _vehicleDal.GetVehicleCount(vehicleList);
 
-            int totalCount = 0;
-            foreach (var item in result)
-            {
-                totalCount += item.VehicleCount;
-            }
+        //    int totalCount = 0;
+        //    foreach (var item in result)
+        //    {
+        //        totalCount += item.VehicleCount;
+        //    }
 
-            var totalDto = new VehicleCountDto()
-            {
-                TaxiType = 0,
-                VehicleCount = totalCount
-            };
+        //    var totalDto = new VehicleCountDto()
+        //    {
+        //        TaxiType = 0,
+        //        VehicleCount = totalCount
+        //    };
 
-            result.Add(totalDto);
-            result = result.OrderBy(x => x.TaxiType).ToList();
+        //    result.Add(totalDto);
+        //    result = result.OrderBy(x => x.TaxiType).ToList();
 
-            return new SuccessDataResult<List<VehicleCountDto>>(result);
-        }
+        //    return new SuccessDataResult<List<VehicleCountDto>>(result);
+        //}
 
         [SecuredOperation("nodejs,admin")]
         public IDataResult<Vehicle> GetById(int id)

@@ -66,7 +66,7 @@ namespace DataAccess.Concrete.EntityFramework
 								 {
 									 Id = r.Id,
 									 Name = r.Name,
-									 ProvinceId = r.ProvinceId
+									 //ProvinceId = r.ProvinceId
 								 }
 
 							 };
@@ -127,7 +127,7 @@ namespace DataAccess.Concrete.EntityFramework
 								 {
 									 Id = r.Id,
 									 Name = r.Name,
-									 ProvinceId = r.ProvinceId
+									 //ProvinceId = r.ProvinceId
 								 }
 
 							 };
